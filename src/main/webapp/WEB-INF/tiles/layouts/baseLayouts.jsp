@@ -12,20 +12,7 @@
 /* 	background-color: #5CD1E5; */
 /* } */
 
-	header {
-		width : 100%;
-	}
-	
-	nav {
-		width : 100%;
-	}
-	
-	section {
-		width : 100%;
-	}
-	
 	footer{
-		position: absolute;
     	left: 0;
     	bottom: 0;
     	width: 100%;
@@ -56,4 +43,7 @@
 		<tiles:insertAttribute name="baseFooter" />	
 	</footer>
 </body>
+
+
+
 </html>

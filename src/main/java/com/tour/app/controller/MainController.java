@@ -46,7 +46,7 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale) {
-		ModelAndView md = new ModelAndView("tiles/main/home");
+		ModelAndView md = new ModelAndView("tiles/main/main");
 		
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
