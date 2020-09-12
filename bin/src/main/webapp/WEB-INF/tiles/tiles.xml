@@ -1,0 +1,27 @@
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+      
+    <!-- 메뉴 표시  -->
+    <definition name="mainLayout" template="/WEB-INF/tiles/layouts/baseLayouts.jsp">
+        <put-attribute name="baseHeader" value="/WEB-INF/tiles/layouts/baseHeader.jsp" />
+        <put-attribute name="baseNavigation" value="/WEB-INF/tiles/layouts/baseNavigation.jsp" />
+        <put-attribute name="baseContents" value="/WEB-INF/tiles/layouts/baseContents.jsp" />
+        <put-attribute name="baseFooter" value="/WEB-INF/tiles/layouts/baseFooter.jsp" />
+    </definition>
+
+    <definition name="popupLayout" extends="mainLayout">
+        <put-attribute name="popContents" value="/WEB-INF/tiles/layouts/popupContents.jsp" />
+    </definition>
+ 
+     <definition name="tilesPopup/*/*" extends="popupLayout">
+         <put-attribute name="popupContents" value="/WEB-INF/views/{1}/{2}.jsp" />
+     </definition>
+    
+    <definition name="tiles/*/*" extends="mainLayout">
+        <put-attribute name="baseContents" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+   
+</tiles-definitions>
