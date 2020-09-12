@@ -5,56 +5,43 @@
 <html>
 <head>
 <style>
-#baseHeader {
-	width: 100%;
-	height: 50px;
-	text-align: center;
-	background-color: #00D8FF;
-}
 
-#baseNavigation {
-	float: left;
-	width: 15%;
-	background-color: #5CD1E5;
-}
+/* #baseNavigation { */
+/* 	float: left; */
+/* 	width: 15%; */
+/* 	background-color: #5CD1E5; */
+/* } */
 
-#baseContents {
-	float: left;
-	width: 85%;
-	background-color: #FFFFFF;
-}
-
-#baseFooter {
-	width: 100%;
-	height: 50px;
-	text-align: center;
-	background-color: #B2EBF4;
-	clear: both;
-}
-#baseNavigation, #baseContents{
-     min-height: 600px;
-}
+	footer{
+		position: absolute;
+    	left: 0;
+    	bottom: 0;
+    	width: 100%;
+		padding: 15px 0;
+		text-align: center;
+		color: white;
+		background: blue;
+	}
 </style>
 
 <meta charset="UTF-8">
 <title>baseLayouts</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
 
-	<div id="baseHeader">
+	<header>
 		<tiles:insertAttribute name="baseHeader" />
-	</div>
-	<div id="baseNavigation">
+	</header>
+	<nav>
 		<tiles:insertAttribute name="baseNavigation" />
-	</div>
-	<div id="baseContents">
+	</nav>
+	<section>
 		<tiles:insertAttribute name="baseContents" />
-	</div>
-	<div id="baseFooter">
-		<tiles:insertAttribute name="baseFooter" />
-	</div>
-
+	</section>
+	<footer>
+		<tiles:insertAttribute name="baseFooter" />	
+	</footer>
 </body>
 </html>
