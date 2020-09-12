@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 위까지 필요파일 -->
+<configuration>
+	<properties/>
+	
+	<settings>
+		<setting name="cacheEnabled" value="true"/>
+		<setting name="lazyLoadingEnabled" value="true"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.tour.app.dto.MemberDTO" alias="MemberDto"/>
+
+	</typeAliases>
+  
+</configuration>
