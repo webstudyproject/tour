@@ -137,45 +137,7 @@ public class MainController {
 		
 		
 	}
+	 
 	
-	
-//	@RequestMapping(value = "/get", method = RequestMethod.GET)
-//	@ResponseBody()
-//	public Map<String, String> get() {
-//		Map<String, String> map = new HashMap<>();
-//		
-//		String id = map.get("id");
-//		String pw = 
-//		
-//	}
-//	
-	
-	
-	
-//	 /**
-//     * Tiles를 사용하지 않은 일반적인 형태
-//     */    
-//    @RequestMapping("/test")
-//    public String test() {
-//        return "test";
-//    }    
-//    
-//    /**
-//     * Tiles를 사용(header, left, footer 포함)
-//     */        
-//    @RequestMapping("/testPage")
-//    public String testPage() {
-//        return "test.page";
-//    }
-//    
-//    /**
-//     * Tiles를 사용(header, left, footer 제외)
-//     */    
-//    @RequestMapping("/testPart")
-//    public String testPart() {
-//        return "test.part";
-//    }
-//	
-//	
-//	
+		
 }
