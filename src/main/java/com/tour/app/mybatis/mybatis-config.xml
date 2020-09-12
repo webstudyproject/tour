@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.tour.app.dto.MemberDTO" alias="MemberDto"/>
+		<typeAlias type="com.tour.app.dto.MemberDTO" alias="MemberDto"/> 
 
 	</typeAliases>
   

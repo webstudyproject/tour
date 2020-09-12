@@ -25,7 +25,7 @@
 	<!-- 설정할 데이터 dataSource , 설정파일 위치 -->
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:/com/tour/app/mybatis/mybatis-config.xml"></property>
-		<property name="mapperLocations" value="classpath:/com/tour/app/mybatis/**/*-mapper.xml"></property>
+		<property name="mapperLocations" value="classpath:/com/tour/app/mybatis/**/*-mapper.xml"></property> 
 		
 	</bean>
 	<!-- 그냥 autowired하면 안되기 때문에 연결해줌  -->
