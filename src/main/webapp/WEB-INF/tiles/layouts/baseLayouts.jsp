@@ -12,6 +12,18 @@
 /* 	background-color: #5CD1E5; */
 /* } */
 
+	header {
+		width : 100%;
+	}
+	
+	nav {
+		width : 100%;
+	}
+	
+	section {
+		width : 100%;
+	}
+	
 	footer{
 		position: absolute;
     	left: 0;
