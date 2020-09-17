@@ -46,6 +46,15 @@
       -webkit-align-items: center;
       align-items: center;
     }
+	.search_input {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
 
 </style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -76,7 +85,7 @@
   </div>
 
 <!-- 카카오 Maps -->
-	<div id="map" style="width:500px;height:400px;"></div>
+	<div id="map" style="width:500px;height:400px; display: none;" ></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6bb59bbd75b137acb6934d0bfcd41172"></script>
 	<script>
 		var container = document.getElementById('map');
@@ -87,6 +96,20 @@
 	
 		var map = new kakao.maps.Map(container, options);
 	</script>
+	
+<!-- 행선지 검색 -->
+	<div id ="tour_search" style="width:100%;height:400px; " >
+		<div style="width:50%;height:400px; float:left;">
+			<input type = 'text' class='search_input' placeholder="출발지를 입력해 주세요."></input>
+		</div>
+		
+		<div style="width:50%;height:400px; float:right">
+			<input type='text' class=search_input placeholder="도착지를 입력해 주세요."></input> <button type="button">추천</button>
+			
+		</div>
+	
+	
+	</div>
 
 
   <!-- Swiper JS -->
