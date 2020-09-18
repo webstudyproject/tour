@@ -58,6 +58,7 @@
 
 </style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
 <meta charset="UTF-8">
 
 
@@ -84,6 +85,33 @@
     <div class="swiper-button-prev"></div>
   </div>
 
+
+	
+<!-- 행선지 검색 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+	$(function(){
+		$('#search_btn').click(function(){
+			if($('#map').css('display') == 'none'){
+				$('#map').css('display', 'inline');
+			}else{
+				$('#map').css('display', 'none')
+			}
+		});
+	});
+</script>
+	<div id ="tour_search" style="width:100%;height:400px; " >
+		<div style="width:50%;height:400px; float:left;">
+			<input type = 'text' class='search_input' placeholder="출발지를 입력해 주세요."></input>
+		</div>
+		
+		<div style="width:50%;height:400px; float:right">
+			<input type='text' class=search_input placeholder="도착지를 입력해 주세요."></input>
+			<button type="button" id="search_btn">추천</button>
+		</div>
+	</div>
+	
 <!-- 카카오 Maps -->
 	<div id="map" style="width:500px;height:400px; display: none;" ></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6bb59bbd75b137acb6934d0bfcd41172"></script>
@@ -96,20 +124,6 @@
 	
 		var map = new kakao.maps.Map(container, options);
 	</script>
-	
-<!-- 행선지 검색 -->
-	<div id ="tour_search" style="width:100%;height:400px; " >
-		<div style="width:50%;height:400px; float:left;">
-			<input type = 'text' class='search_input' placeholder="출발지를 입력해 주세요."></input>
-		</div>
-		
-		<div style="width:50%;height:400px; float:right">
-			<input type='text' class=search_input placeholder="도착지를 입력해 주세요."></input> <button type="button">추천</button>
-			
-		</div>
-	
-	
-	</div>
 
 
   <!-- Swiper JS -->
