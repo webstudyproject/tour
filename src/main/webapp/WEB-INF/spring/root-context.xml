@@ -4,10 +4,14 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring
+		http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
@@ -29,7 +33,7 @@
 		
 	</bean>
 	<!-- 그냥 autowired하면 안되기 때문에 연결해줌  -->
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
 		<constructor-arg index="0" ref="sqlSession"></constructor-arg>
 	</bean>
 	
@@ -62,8 +66,11 @@
 	<!-- controller를 annotation으로 제외 -->
 	<!-- <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RequestMapping"/> -->
 	<!-- controller를 regex 식으로 제외 -->
- 	<context:exclude-filter type="regex" expression="com.tour.app.controller.*"/> </context:component-scan>	
-	 
+	<context:exclude-filter type="regex" expression="com.tour.app.controller.*"/> </context:component-scan>	
+	
 	<task:annotation-driven/>
+
+	<mybatis-spring:scan
+		base-package="com.tour.app.dao" />
 
 </beans>
