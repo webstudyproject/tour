@@ -95,13 +95,12 @@
 		$('#search_btn').click(function(){
 			if($('#map').css('display') == 'none'){
 				$('#map').css('display', 'inline');
-			}else{
-				$('#map').css('display', 'none')
 			}
 		});
 	});
 </script>
-	<div id ="tour_search" style="width:100%;height:400px; " >
+	
+	<div id ="tour_search_bar" style="width:100%;height:400px;" >
 		<div style="width:50%;height:400px; float:left;">
 			<input type = 'text' class='search_input' placeholder="출발지를 입력해 주세요."></input>
 		</div>
@@ -113,7 +112,7 @@
 	</div>
 	
 <!-- 카카오 Maps -->
-	<div id="map" style="width:500px;height:400px; display: none;" ></div>
+	<div id="map" style="width:100%;height:400px; display: none;" ></div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6bb59bbd75b137acb6934d0bfcd41172"></script>
 	<script>
 		var container = document.getElementById('map');
