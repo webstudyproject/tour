@@ -1,7 +1,6 @@
 package com.tour.app.controller;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -9,30 +8,17 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.sun.mail.iap.ByteArray;
 
 
 
@@ -60,12 +46,12 @@ public class MainController {
 		return md;
 	}
 	/* 
-	 * 12 [위치기반 관광정보 조회]
-	 * 내용 :내 주변 좌표를 기반으로 관광정보 목록을 조회하는 기능입니다.
-	 * 	      파라미터에 따라 제목순, 수정일순(최신순), 등록일순, 인기순, 거리순 정렬검색을 제공합니다.
-	 * 형식 : http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList
+	 * 12 [�쐞移섍린諛� 愿�愿묒젙蹂� 議고쉶]
+	 * �궡�슜 :�궡 二쇰� 醫뚰몴瑜� 湲곕컲�쑝濡� 愿�愿묒젙蹂� 紐⑸줉�쓣 議고쉶�븯�뒗 湲곕뒫�엯�땲�떎.
+	 * 	      �뙆�씪誘명꽣�뿉 �뵲�씪 �젣紐⑹닚, �닔�젙�씪�닚(理쒖떊�닚), �벑濡앹씪�닚, �씤湲곗닚, 嫄곕━�닚 �젙�젹寃��깋�쓣 �젣怨듯빀�땲�떎.
+	 * �삎�떇 : http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList
 	 * 
-	 * 내 주변 좌표에서 100m 이내에 있는 모든타입의 관광정보 조회 
+	 * �궡 二쇰� 醫뚰몴�뿉�꽌 100m �씠�궡�뿉 �엳�뒗 紐⑤뱺���엯�쓽 愿�愿묒젙蹂� 議고쉶 
 	 */
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public void test(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -76,23 +62,23 @@ public class MainController {
 		
 		
 		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/";
-		String op = "locationBasedList"; //데이터에 따라서 변할 수 있음
+		String op = "locationBasedList"; //�뜲�씠�꽣�뿉 �뵲�씪�꽌 蹂��븷 �닔 �엳�쓬
 		String ServiceKey_format = "?ServiceKey=";
 		String ServiceKey = "5hc1FL3etDT088xXejCpTJlt7n04F0615kopSVbUsLU%2FNPRwWJZDLZuECahwmDqQ45kWFQ2ovi2uDFqfmxBHDw%3D%3D";
 		String parameter ="";
 		
 		
-		parameter = parameter + "&" + "mapX=" + "126.981611"; // X좌표
-		parameter = parameter + "&" + "mapY=" + "37.568477"; // Y좌표
-		parameter = parameter + "&" + "radius=" + "1000"; //거리 반경
-		parameter = parameter + "&" + "listYN=" + "Y"; //목록 구분
-		parameter = parameter + "&" + "arrange=" + "A"; // 정렬 구분
+		parameter = parameter + "&" + "mapX=" + "126.981611"; // X醫뚰몴
+		parameter = parameter + "&" + "mapY=" + "37.568477"; // Y醫뚰몴
+		parameter = parameter + "&" + "radius=" + "1000"; //嫄곕━ 諛섍꼍
+		parameter = parameter + "&" + "listYN=" + "Y"; //紐⑸줉 援щ텇
+		parameter = parameter + "&" + "arrange=" + "A"; // �젙�젹 援щ텇
 
-		// 기본 parameter
-		parameter = parameter + "&" + "MobileOS=" + "ETC"; // OS 구분
-		parameter = parameter + "&" + "MobileApp=" + "Whee"; // 서비스명 
+		// 湲곕낯 parameter
+		parameter = parameter + "&" + "MobileOS=" + "ETC"; // OS 援щ텇
+		parameter = parameter + "&" + "MobileApp=" + "Whee"; // �꽌鍮꾩뒪紐� 
 		// default => xml 
-		// json parameter 추가 => json
+		// json parameter 異붽� => json
 		parameter = parameter + "&" + "_type=" + "json";
 		
 		
@@ -100,7 +86,7 @@ public class MainController {
 		
 		URL url = new URL(addr);
 		
-		System.out.println("url 요청: " + addr);
+		System.out.println("url �슂泥�: " + addr);
 		
 //		InputStream in = url.openStream();
 //		
