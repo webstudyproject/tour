@@ -15,7 +15,7 @@ public class SampleDaoImpl implements SampleDao{
 	@Override
 	public int SampleSelect() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("SampleDao.sampleSelect");	//	mybatis-config.xml ¿¡ ÀÖ´Â ("³×ÀÓ½ºÆäÀÌ½º.½Äº°ÀÚ")
+		return sqlSession.selectOne("SampleDao.sampleSelect");	//	mybatis-config.xml ì— ìˆëŠ” ("ë„¤ì„ìŠ¤í˜ì´ìŠ¤.ì‹ë³„ì");
 	}
 	
 	

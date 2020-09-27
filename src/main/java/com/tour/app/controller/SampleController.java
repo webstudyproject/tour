@@ -26,7 +26,7 @@ public class SampleController {
 		model.addAttribute("result",result);
 		
 		return "/sample/sampleJsp";
-//		return "tiles/sample/sampleJsp";	//	tiles »ç¿ë
+//		return "tiles/sample/sampleJsp";	//	tiles ì‚¬ìš©
 	}
 	
 }
