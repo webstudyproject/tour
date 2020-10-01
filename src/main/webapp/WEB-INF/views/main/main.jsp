@@ -47,10 +47,9 @@
       align-items: center;
     }
 	.search_input {
-	  width: 100%;
+	  width: 500px;
 	  padding: 12px 20px;
 	  margin: 8px 0;
-	  display: inline-block;
 	  border: 1px solid #ccc;
 	  border-radius: 4px;
 	  box-sizing: border-box;
@@ -60,7 +59,11 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
 <meta charset="UTF-8">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6bb59bbd75b137acb6934d0bfcd41172&libraries=services"></script>
+ <!-- Swiper JS -->
+ <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </head>
 <body>
@@ -88,45 +91,76 @@
 
 	
 <!-- 행선지 검색 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+<!-- 
 <script>
 	$(function(){
-		$('#search_btn').click(function(){
+		$('#box_btn').click(function(){
 			if($('#map').css('display') == 'none'){
-				$('#map').css('display', 'inline');
+				$('#map').css('display', 'block');
 			}
 		});
 	});
 </script>
-	
-	<div id ="tour_search_bar" style="width:100%;height:400px;" >
-		<div style="width:50%;height:400px; float:left;">
-			<input type = 'text' class='search_input' placeholder="출발지를 입력해 주세요."></input>
+	 여행 searchTab 
+	<div class="Tour_box" style="width:100%;height:800px;">
+		<div class = "box_way">
+		 	<div class = "start_item" style="margin-left:15%; display:inline-block;">
+		 		<span class="tit">출발지</span>
+		 		<input type = 'text' class='search_input' placeholder="출발지를 입력해 주세요."></input>
+		 	</div>
+		 	
+		 	<div class = "end_item" style="display:inline;">
+		 		<span class="tit">도착지</span>
+		 		<input type='text' class=search_input placeholder="도착지를 입력해 주세요."></input>
+		 	</div>
+		 	
+		 	
+		 	<div id = "box_btn" style="display:inline;">
+		 		<button type="button" id="search_btn">추천</button>
+		 	</div>
+			
 		</div>
+		 카카오 Maps 
+		<div id="map" style="width:500px;height:400px; display: none;" ></div>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6bb59bbd75b137acb6934d0bfcd41172"></script>
+			<script>
+				var container = document.getElementById('map');
+				var options = {
+					center: new kakao.maps.LatLng(33.450701, 126.570667),
+					level: 3
+				};
+			
+				var map = new kakao.maps.Map(container, options);
+			</script>
 		
-		<div style="width:50%;height:400px; float:right">
-			<input type='text' class=search_input placeholder="도착지를 입력해 주세요."></input>
-			<button type="button" id="search_btn">추천</button>
-		</div>
-	</div>
+	</div> 
+-->
+<!-- 위치기반 검색 페이지 버튼/ 디테일검색페이지 이동 버튼-->
+<div style="width:80%;height:400px;background-color:coral; margin:0 auto;">
 	
-<!-- 카카오 Maps -->
-	<div id="map" style="width:100%;height:400px; display: none;" ></div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6bb59bbd75b137acb6934d0bfcd41172"></script>
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 4
-		};
+	<button type="button" class="btn btn-primary" onclick="location.href=''">위치기반 검색 페이지 버튼</button>
 	
-		var map = new kakao.maps.Map(container, options);
-	</script>
+	
+	<button type="button" class="btn btn-primary" onclick="location.href=''">디테일검색페이지 이동 버튼</button>
+	
+</div>
+
+<!-- 광고1 -->
+<div class = "ad_1" style="width:80%;height:800px;background-color:blue; margin:0 auto; ">
+	<b style="color:black; font-size:30px">광고1</b>
+	<hr>
+</div>
+
+<!-- 광고2 -->
+<div class = "ad_2" style="width:80%;height:800px;background-color:yellow; margin:0 auto; ">
+	<b style="color:black; font-size:30px">광고2</b>
+	<hr>
+</div>
+	
 
 
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 
   <!-- Initialize Swiper -->
   <script>
