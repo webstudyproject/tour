@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	이 파일은 SQL 명령만 보관하는 파일
+	따라서 외부에서 접근할 수 있도록 namespace를 지정
+ -->
+ 
+<!--  https://ssodang.tistory.com/entry/MyBatis-resultMap-collection collection으로 고쳐보기  -->
+<mapper namespace="board">
+	<resultMap type="post" id="postMap">
+		<id column="post_id" property="postId"/> 
+		<result column="board_type_id" property="boardTypeId"/>
+		<result column="title" property="title"/>
+		<result column="member_id" property="memberId"/>
+		<result column="create_date" property="createDate"/>
+		<result column="notify_flag" property="notifyFlag"/>
+		<result column="hits_number" property="hitsNumber"/>
+	</resultMap>	
+	
+	<resultMap type="postComment" id="commentMap">
+		<id column="post_comment_id" property="postCommentId"/>
+		<result column="post_id" property="postId"/>
+		<result column="comment_content" property="commentContent"/>
+		<result column="member_id" property="memberId" />
+		<result column="create_date" property="createDate" />
+		<result column="parent_comment_id" property="parentCommentId"/>
+	</resultMap>
+	
+	
+	<select id="getPostList" resultMap="postMap" parameterType="int">
+		SELECT * FROM post where board_type_id=#{boardTypeId} order by post_id
+	</select>
+	
+	<select id="getPost" resultMap="postMap" parameterType="int">
+		SELECT * FROM post where post_id=#{postId}
+	</select>
+	
+	<select id="getPostComments" resultMap="commentMap" parameterType="int">
+		SELECT * FROM post_comment where post_id=#{postId}	   
+	</select>
+	
+	<select id="getPostContent" resultType="PostContent" parameterType="int">
+		SELECT post_id AS postId,
+			   board_type_id AS boardTypeId,
+			   content
+		FROM POST_CONTENT
+		WHERE POST_ID=#{postId}
+	</select>
+	
+ 	<insert id="insertPost" parameterType="post" useGeneratedKeys="true" keyColumn="post_id" keyProperty="postId">
+		INSERT INTO post values(seq_post_id.NEXTVAL , #{boardTypeId}, #{title}, #{memberId}, SYSDATE, #{notifyFlag}, #{hitsNumber})
+	</insert>
+	
+	<delete id="deletePost" parameterType="int">
+		DELETE post where post_id=#{postId}
+	</delete>
+	
+	<update id="modifyPost" parameterType="post">
+		UPDATE post set title=#{title} WHERE post_id=#{postId}
+	</update>
+	
+	
+	<insert id="insertContent" parameterType="PostContent">
+		INSERT INTO post_content values(#{postId} , #{boardTypeId}, #{content})
+	</insert>
+	
+	<delete id="deleteContent" parameterType="int">
+		DELETE post_content where post_id=#{postId}
+	</delete>
+
+	<update id="modifyContent" parameterType="PostContent">
+		UPDATE post_content set content=#{content} WHERE post_id=#{postId}
+	</update>
+	
+	<insert id ="insertComment" parameterType="postComment">
+		INSERT INTO post_comment values(#{postCommentId} , #{postId}, #{commentContent}, #{memberId}, SYSDATE, #{parentCommentId})
+	</insert>
+	
+	<delete id="deleteComment" parameterType="int">
+		DELETE post_comment where post_comment_id=#{postCommentId}
+	</delete>
+	
+	<update id="modifyComment" parameterType="postComment">
+		UPDATE post_comment set comment_content=#{commentContent}
+	</update>
+</mapper>

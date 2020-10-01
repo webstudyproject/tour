@@ -13,7 +13,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	<typeAliases>
 		<typeAlias type="com.tour.app.dto.MemberDTO" alias="MemberDto"/> 
-
+		<typeAlias type="com.tour.app.dto.PostDTO" alias="post"/> 
+		<typeAlias type="com.tour.app.dto.PostContentDTO" alias="PostContent"/> 
+		<typeAlias type="com.tour.app.dto.PostCommentDTO" alias="postComment"/> 
 	</typeAliases>
   
 </configuration>
