@@ -26,13 +26,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class detailPageController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory.getLogger(detailPageController.class);
 	
 	@RequestMapping(value = "/detailPage", method = RequestMethod.GET)
 	public ModelAndView detailPage(Locale locale) {
 		logger.info("detailPage! {}.", locale);
 		
-		ModelAndView md = new ModelAndView("tiles/main/detailPage");
+		ModelAndView md = new ModelAndView("tiles/main/Test");
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
