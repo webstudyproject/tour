@@ -54,6 +54,42 @@
 	  border-radius: 4px;
 	  box-sizing: border-box;
 	}
+	
+	.search_btn_div{
+		width:80%;
+		height:400px;
+		background-color:coral; 
+		margin:0 auto;
+		text-align: center;
+	}
+	.btn-primary{
+		width:300px;
+		height:50px;
+		
+	}
+	
+	#location_btn{
+		margin: 0 auto;
+		margin-top:200px;
+	}
+	
+	#datailPage_btn{
+		margin: 0 auto;
+		margin-top:200px;
+	}
+	
+	.ad_1{
+		width:80%;
+		height:800px;
+		background-color:blue; 
+		margin:0 auto; 
+	}
+	.ad_2{
+		width:80%;
+		height:800px;
+		background-color:yellow;
+		margin:0 auto; 
+	}
 
 </style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -137,23 +173,22 @@
 	</div> 
 -->
 <!-- 위치기반 검색 페이지 버튼/ 디테일검색페이지 이동 버튼-->
-<div style="width:80%;height:400px;background-color:coral; margin:0 auto;">
+<div class ="search_btn_div">
 	
-	<button type="button" class="btn btn-primary" onclick="location.href=''">위치기반 검색 페이지 버튼</button>
-	
-	
-	<button type="button" class="btn btn-primary" onclick="location.href=''">디테일검색페이지 이동 버튼</button>
+	<button id = "location_btn" type="button" class="btn btn-primary" onclick="location.href='detailPage'">위치기반 검색 페이지 버튼</button>
+
+	<button id = "datailPage_btn" type="button" class="btn btn-primary" onclick="location.href=''" >디테일검색페이지 이동 버튼</button>
 	
 </div>
 
 <!-- 광고1 -->
-<div class = "ad_1" style="width:80%;height:800px;background-color:blue; margin:0 auto; ">
+<div class = "ad_1" style="">
 	<b style="color:black; font-size:30px">광고1</b>
 	<hr>
 </div>
 
 <!-- 광고2 -->
-<div class = "ad_2" style="width:80%;height:800px;background-color:yellow; margin:0 auto; ">
+<div class = "ad_2" style="">
 	<b style="color:black; font-size:30px">광고2</b>
 	<hr>
 </div>
