@@ -45,13 +45,8 @@ public class MainController {
 		
 		return md;
 	}
-	/* 
-	 * 12 [�쐞移섍린諛� 愿�愿묒젙蹂� 議고쉶]
-	 * �궡�슜 :�궡 二쇰� 醫뚰몴瑜� 湲곕컲�쑝濡� 愿�愿묒젙蹂� 紐⑸줉�쓣 議고쉶�븯�뒗 湲곕뒫�엯�땲�떎.
-	 * 	      �뙆�씪誘명꽣�뿉 �뵲�씪 �젣紐⑹닚, �닔�젙�씪�닚(理쒖떊�닚), �벑濡앹씪�닚, �씤湲곗닚, 嫄곕━�닚 �젙�젹寃��깋�쓣 �젣怨듯빀�땲�떎.
-	 * �삎�떇 : http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList
-	 * 
-	 * �궡 二쇰� 醫뚰몴�뿉�꽌 100m �씠�궡�뿉 �엳�뒗 紐⑤뱺���엯�쓽 愿�愿묒젙蹂� 議고쉶 
+	/*
+	 * 주석 테스트입니다.
 	 */
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public void test(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -87,20 +82,6 @@ public class MainController {
 		URL url = new URL(addr);
 		
 		System.out.println("url �슂泥�: " + addr);
-		
-//		InputStream in = url.openStream();
-//		
-//		System.out.println(in);
-//		ByteArrayOutputStream bos1 = new ByteArrayOutputStream();
-//		IOUtils.copy(in, bos1);
-//		
-//		
-//		in.close();
-//		bos1.close();
-//		
-//		String result = bos1.toString("UTF-8");
-//		
-//		out.println(result);
 		
 		URLConnection conn = url.openConnection();
 		InputStream is = conn.getInputStream();
