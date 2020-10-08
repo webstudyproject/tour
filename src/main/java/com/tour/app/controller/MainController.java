@@ -57,23 +57,23 @@ public class MainController {
 		
 		
 		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/";
-		String op = "locationBasedList"; //�뜲�씠�꽣�뿉 �뵲�씪�꽌 蹂��븷 �닔 �엳�쓬
+		String op = "locationBasedList"; 
 		String ServiceKey_format = "?ServiceKey=";
 		String ServiceKey = "5hc1FL3etDT088xXejCpTJlt7n04F0615kopSVbUsLU%2FNPRwWJZDLZuECahwmDqQ45kWFQ2ovi2uDFqfmxBHDw%3D%3D";
 		String parameter ="";
 		
 		
-		parameter = parameter + "&" + "mapX=" + "126.981611"; // X醫뚰몴
-		parameter = parameter + "&" + "mapY=" + "37.568477"; // Y醫뚰몴
-		parameter = parameter + "&" + "radius=" + "1000"; //嫄곕━ 諛섍꼍
-		parameter = parameter + "&" + "listYN=" + "Y"; //紐⑸줉 援щ텇
-		parameter = parameter + "&" + "arrange=" + "A"; // �젙�젹 援щ텇
+		parameter = parameter + "&" + "mapX=" + "126.981611"; 
+		parameter = parameter + "&" + "mapY=" + "37.568477"; 
+		parameter = parameter + "&" + "radius=" + "1000";
+		parameter = parameter + "&" + "listYN=" + "Y";
+		parameter = parameter + "&" + "arrange=" + "A";
 
-		// 湲곕낯 parameter
-		parameter = parameter + "&" + "MobileOS=" + "ETC"; // OS 援щ텇
-		parameter = parameter + "&" + "MobileApp=" + "Whee"; // �꽌鍮꾩뒪紐� 
+		// parameter
+		parameter = parameter + "&" + "MobileOS=" + "ETC";
+		parameter = parameter + "&" + "MobileApp=" + "Whee"; 
 		// default => xml 
-		// json parameter 異붽� => json
+		// json parameter => json
 		parameter = parameter + "&" + "_type=" + "json";
 		
 		
@@ -81,7 +81,7 @@ public class MainController {
 		
 		URL url = new URL(addr);
 		
-		System.out.println("url �슂泥�: " + addr);
+		System.out.println("url: " + addr);
 		
 		URLConnection conn = url.openConnection();
 		InputStream is = conn.getInputStream();
