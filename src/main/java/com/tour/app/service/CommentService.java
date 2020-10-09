@@ -6,35 +6,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tour.app.dao.PostDao;
-import com.tour.app.dto.PostCommentDTO;
+import com.tour.app.dto.PostCommentDto;
 
 @Service
 public class CommentService {
 	@Autowired
 	private PostDao postDao;
 
-	public List<PostCommentDTO> getPostCommentList(int postId) {
+	public List<PostCommentDto> getPostCommentList(int postId) {
 		return postDao.getPostComments(postId);
-
 	}
 
-	public void insertPostComment(PostCommentDTO postCommentDTO) {
-		postDao.insertComment(postCommentDTO);
+	public void insertPostComment(PostCommentDto postCommentDto) {
+		postDao.insertComment(postCommentDto);
 	}
 
-	public void deletePostComment(PostCommentDTO postCommentDTO) {
-		postDao.deleteComment(postCommentDTO.getPostCommentId());
+	public void deletePostComment(PostCommentDto postCommentDto) {
+		postDao.deleteComment(postCommentDto.getPostCommentId());
 	}
 
-	public void modifyPostComment(PostCommentDTO postCommentDTO) {
-		postDao.modifyComment(postCommentDTO);
+	public void modifyPostComment(PostCommentDto postCommentDto) {
+		postDao.modifyComment(postCommentDto);
 	}
 
-	public boolean numberCompare(int number1, int number2) {
-		if (number1 == number2) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }

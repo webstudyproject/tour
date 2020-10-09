@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tour.app.dao.PostDao;
-import com.tour.app.dto.*;
+import com.tour.app.dto.PostCommentDto;
+import com.tour.app.dto.PostDto;
 
 @Service
 public class PostService {
@@ -14,18 +15,18 @@ public class PostService {
 	@Autowired 
 	private PostDao postDao;
 	
-	public List<PostDTO> getPostList(int boardTypeId){
-		List<PostDTO> posts = postDao.getPostList(boardTypeId);
+	public List<PostDto> getPostList(int boardTypeId){
+		List<PostDto> posts = postDao.getPostList(boardTypeId);
 		
-		for (PostDTO post : posts) {
+		for (PostDto post : posts) {
 			post.setPostContent(postDao.getPostContent(post.getPostId()));
 			post.setPostComments(postDao.getPostComments(post.getPostId()));
 		}
 		return posts;
 	}
 	
-	public PostDTO getPost(int postId) {
-		PostDTO post = postDao.getPost(postId);
+	public PostDto getPost(int postId) {
+		PostDto post = postDao.getPost(postId);
 		
 		if (post != null) {
 			post.setPostContent(postDao.getPostContent(post.getPostId()));
@@ -34,23 +35,23 @@ public class PostService {
 		return post;
 	}
 	
-	public void insertPost(PostDTO postDTO) {
-		postDao.insertPost(postDTO);
-		postDTO.getPostContent().setPostId(postDTO.getPostId());
-		postDao.insertPostContent(postDTO.getPostContent());
+	public void insertPost(PostDto postDto) {
+		postDao.insertPost(postDto);
+		postDto.getPostContent().setPostId(postDto.getPostId());
+		postDao.insertPostContent(postDto.getPostContent());
 	}
 	
-	public void deletePost(PostDTO postDTO) {
-		postDao.deletePost((postDTO.getPostId()));
-		postDao.deletePostContent(postDTO.getPostContent().getPostId());
-		if (postDTO.getPostComments() != null) {
-			for (PostCommentDTO comment : postDTO.getPostComments()){
+	public void deletePost(PostDto postDto) {
+		postDao.deletePost((postDto.getPostId()));
+		postDao.deletePostContent(postDto.getPostContent().getPostId());
+		if (postDto.getPostComments() != null) {
+			for (PostCommentDto comment : postDto.getPostComments()){
 				postDao.deleteComment(comment.getPostCommentId());
 			}
 		}
 	}
 	
-	public void modifyPost(PostDTO postDTO) {
+	public void modifyPost(PostDto postDTO) {
 		postDao.modifyPostContent(postDTO.getPostContent());
 		postDao.modifyPost(postDTO);
 	}

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tour.app.dto.PostCommentDTO;
+import com.tour.app.dto.PostCommentDto;
 import com.tour.app.service.CommentService;
 
 @RestController
@@ -23,27 +23,27 @@ public class CommentController {
 	CommentService commentService;
 	
 	@RequestMapping(value = "/list/{postId}", method = RequestMethod.GET)
-	public List<PostCommentDTO> getCommentList(@PathVariable int postId, Locale locale) {
-		List <PostCommentDTO> comments = commentService.getPostCommentList(postId);		
+	public List<PostCommentDto> getCommentList(@PathVariable int postId, Locale locale) {
+		List <PostCommentDto> comments = commentService.getPostCommentList(postId);		
 		System.out.println(comments);
 		return comments;
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)
-	public String insertComment(@RequestBody PostCommentDTO postCommentDTO) {
-		commentService.insertPostComment(postCommentDTO);
+	public String insertComment(@RequestBody PostCommentDto postCommentDto) {
+		commentService.insertPostComment(postCommentDto);
 		return "insert Success";
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.PUT)
-	public String modifyComment(@RequestBody PostCommentDTO postCommentDTO) {
-		commentService.modifyPostComment(postCommentDTO);
+	public String modifyComment(@RequestBody PostCommentDto postCommentDto) {
+		commentService.modifyPostComment(postCommentDto);
 		return "modify Success";
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.DELETE)
-	public String deleteComment(@RequestBody PostCommentDTO postCommentDTO) {
-		commentService.deletePostComment(postCommentDTO);
+	public String deleteComment(@RequestBody PostCommentDto postCommentDto) {
+		commentService.deletePostComment(postCommentDto);
 		return "delete Success";
 	}
 

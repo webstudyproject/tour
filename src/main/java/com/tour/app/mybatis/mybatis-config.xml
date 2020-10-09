@@ -12,10 +12,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.tour.app.dto.MemberDTO" alias="MemberDto"/> 
-		<typeAlias type="com.tour.app.dto.PostDTO" alias="post"/> 
-		<typeAlias type="com.tour.app.dto.PostContentDTO" alias="PostContent"/> 
-		<typeAlias type="com.tour.app.dto.PostCommentDTO" alias="postComment"/> 
+		<typeAlias type="com.tour.app.dto.MemberDto" alias="MemberDto"/> 
+		<typeAlias type="com.tour.app.dto.PostDto" alias="Post"/> 
+		<typeAlias type="com.tour.app.dto.PostContentDto" alias="PostContent"/> 
+		<typeAlias type="com.tour.app.dto.PostCommentDto" alias="PostComment"/> 
 	</typeAliases>
-  
+
 </configuration>

@@ -10,48 +10,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tour.app.dto.PostContentDTO;
-import com.tour.app.dto.PostDTO;
+import com.tour.app.dto.PostDto;
 import com.tour.app.service.PostService;
 
-@RestController
+@Controller
 @RequestMapping("post")
 public class PostController {
 	
 	@Autowired 
 	private PostService postService;
 	
+	@RequestMapping(value="/page", method=RequestMethod.GET)
+	public String getPostPage() {
+		return "tiles/post/list";
+	}
+	
+	@RequestMapping(value="/write/page", method=RequestMethod.GET)
+	public String getPostWritePage() {
+		return "tiles/post/write";
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public List<PostDTO> getPostList(@RequestParam int boardType, Locale locale) {
-		List <PostDTO> posts = postService.getPostList(boardType);	
+	public List<PostDto> getPostList(@RequestParam int boardType, Locale locale) {
+		List <PostDto> posts = postService.getPostList(boardType);	
 		return posts;
 	}
 	
-	
+	@ResponseBody
 	@RequestMapping(value = "/{postId}", method = RequestMethod.GET)
-	public PostDTO getPost(@PathVariable("postId") int postId) {
-		PostDTO post = postService.getPost(postId);	
+	public PostDto getPost(@PathVariable("postId") int postId) {
+		PostDto post = postService.getPost(postId);	
 		return post;
 	}
 	
-	
+	@ResponseBody
 	@RequestMapping(value="/", method = RequestMethod.POST)
-	public String insertPost(@RequestBody PostDTO postDTO) {
-		postService.insertPost(postDTO);
+	public String insertPost(@RequestBody PostDto postDto) {
+		System.out.println(postDto);
+		postService.insertPost(postDto);
 		return "insert success";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/", method=RequestMethod.PUT)
-	public String modifyPost(@RequestBody PostDTO postDTO) {
-		postService.modifyPost(postDTO);
+	public String modifyPost(@RequestBody PostDto postDto) {
+		postService.modifyPost(postDto);
 		return "modify success";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/", method=RequestMethod.DELETE)
-	public String deletPost(@RequestBody PostDTO postDTO) {
-		postService.deletePost(postDTO);;
+	public String deletPost(@RequestBody PostDto postDto) {
+		postService.deletePost(postDto);;
 		return "delete success";
 	}
 }
