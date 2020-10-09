@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	이 파일은 SQL 명령만 보관하는 파일
+	따라서 외부에서 접근할 수 있도록 namespace를 지정
+ -->
+ 
+<!--  https://ssodang.tistory.com/entry/MyBatis-resultMap-collection collection으로 고쳐보기  -->
+<mapper namespace="board">
+	<resultMap type="Post" id="postMap">
+		<id column="post_id" property="postId"/> 
+		<result column="post_board_type_id" property="postBoardTypeId"/>
+		<result column="post_title" property="postTitle"/>
+		<result column="post_member_id" property="postMemberId"/>
+		<result column="post_create_date" property="postCreateDate"/>
+		<result column="post_notify_flag" property="postNotifyFlag"/>
+		<result column="post_hits_number" property="postHitsNumber"/>
+	</resultMap>	
+	
+	<resultMap type="PostComment" id="commentMap">
+		<id column="post_comment_id" property="postCommentId"/>
+		<result column="post_id" property="postId"/>
+		<result column="post_comment_content" property="postCommentContent"/>
+		<result column="post_comment_member_id" property="postCommentMemberId" />
+		<result column="post_comment_create_date" property="postCommentcreateDate" />
+		<result column="post_comment_parent_comment_id" property="postCommentParentCommentId"/>
+	</resultMap>
+	
+	
+	<select id="getPostList" resultMap="postMap" parameterType="int">
+		SELECT post_id, post_board_type_id, post_title, post_member_id, TO_CHAR(post_create_date, 'YYYY-MM-DD HH24:MI:SS') as post_create_date, post_notify_flag, post_hits_number
+		FROM post where post_board_type_id=#{boardTypeId} order by post_id desc
+	</select>
+	
+	<select id="getPost" resultMap="postMap" parameterType="int">
+		SELECT post_id, post_board_type_id, post_title, post_member_id, TO_CHAR(post_create_date, 'YYYY-MM-DD HH24:MI:SS') as pody_create_date, post_notify_flag, post_hits_number
+		FROM post where post_id=#{postId}
+	</select>
+	
+	<select id="getPostComments" resultMap="commentMap" parameterType="int">
+		SELECT post_comment_id, post_id, post_comment_content, post_comment_member_id, TO_CHAR(post_comment_create_date, 'YYYY-MM-DD HH24:MI:SS') as post_comment_create_date, post_comment_parent_comment_id
+		FROM post_comment where post_id=#{postId}	   
+	</select>
+	
+	<select id="getPostContent" resultType="PostContent" parameterType="int">
+		SELECT post_id AS postId,
+			   post_board_type_id AS postBoardTypeId,
+			   post_content AS postContent
+		FROM POST_CONTENT
+		WHERE POST_ID=#{postId}
+	</select>
+	
+ 	<insert id="insertPost" parameterType="Post" useGeneratedKeys="true" keyColumn="post_id" keyProperty="postId">
+		INSERT INTO post values(seq_post_id.NEXTVAL , #{postBoardTypeId}, #{postTitle}, #{postMemberId}, current_date, #{postNotifyFlag}, #{postHitsNumber})
+	</insert>
+	
+	<delete id="deletePost" parameterType="int">
+		DELETE post where post_id=#{postId}
+	</delete>
+	
+	<update id="modifyPost" parameterType="Post">
+		UPDATE post set post_title=#{postTitle} WHERE post_id=#{postId}
+	</update>
+	
+	
+	<insert id="insertContent" parameterType="PostContent">
+		INSERT INTO post_content values(#{postId} , #{boardTypeId}, #{postContent})
+	</insert>
+	
+	<delete id="deleteContent" parameterType="int">
+		DELETE post_content where post_id=#{postId}
+	</delete>
+
+	<update id="modifyContent" parameterType="PostContent">
+		UPDATE post_content set post_content=#{postContent} WHERE post_id=#{postId}
+	</update>
+	
+	<insert id ="insertComment" parameterType="PostComment">
+		INSERT INTO post_comment values(#{postCommentId} , #{postId}, #{postCommentContent}, #{postCommentMemberId}, SYSDATE, #{postCommentParentCommentId})
+	</insert>
+	
+	<delete id="deleteComment" parameterType="int">
+		DELETE post_comment where post_comment_id=#{postCommentId}
+	</delete>
+	
+	<update id="modifyComment" parameterType="PostComment">
+		UPDATE post_comment set post_comment_content=#{postCommentContent}
+	</update>
+</mapper>
