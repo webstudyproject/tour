@@ -59,7 +59,7 @@
 </body>
 <script>
 
-	const getObject = (writeForm) => {
+	function getObject(writeForm) {
 		let boardTypeId;
 		for (index in writeForm["boardType"]){
 			if (writeForm["boardType"][index].checked){
@@ -80,7 +80,7 @@
 	}
 	
 
-	const validation = (writeForm) => {
+	function validation(writeForm) {
 		if (writeForm["title"].value === ""){
 			alert("글 제목을 입력해주세요");
 			return false;
@@ -106,7 +106,7 @@
 	window.addEventListener('DOMContentLoaded', function() {
 		const button = document.getElementsByClassName("btn")[0];
 
-		button.addEventListener('click', (event) => {
+		button.addEventListener('click', function (event) {
 			const writeForm = document.getElementById("writeForm");
 			if (validation(writeForm) === false){
 				return;

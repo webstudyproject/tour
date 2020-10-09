@@ -50,7 +50,7 @@
 
 <script>
 
-	const getParam = (sname) => {
+	function getParam(sname) {
 		var params = location.search.substr(location.search.indexOf("?") + 1);
 
 		params = params.split("&");
@@ -60,7 +60,7 @@
 		}
 	}
 	
-	const init = (postList) => {
+	function init(postList) {
 		function convertToDate(createDate) {
 			const sysdate = new Date(createDate);
 			return moment(sysdate).format('YYYY.MM.DD HH:mm:ss');
