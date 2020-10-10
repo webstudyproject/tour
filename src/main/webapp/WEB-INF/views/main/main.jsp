@@ -51,19 +51,19 @@
       width:100%;
       height:100%;
       text-align: center;
-    }
-    
-    .Tour{
-    	display: inline-block;
-    	margin-top:100px;
-    	margin-left:20px
-    	
+      
     }
     .box_way{
     	width:80%;
     	height:400px;
+    	margin:0 auto;
+    	background-color:coral;
     }
-    
+    .Tour{
+    	display: inline-block;
+    	margin-top:150px;
+    }
+
     .Tour.start_item{
     	
     }
@@ -77,7 +77,7 @@
 	}
 	
 	.search_input {
-	  width: 500px;
+	  width: 300px;
 	  padding: 12px 20px;
 	  margin: 8px 0;
 	  border: 1px solid #ccc;
@@ -226,35 +226,16 @@
 -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- JS  -->
-
 <!-- 경로를 보여주는 지도JS  -->
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx677a71e26da643e3bbc8f61c8901a646"></script>
-<script>
+<script type="text/javascript">
    var map;
    var marker_s, marker_e, marker_p1, marker_p2;
    var totalMarkerArr = [];
    var drawInfoArr = [];
    var resultdrawArr = [];
-
+   
    function initTmap() {
       // 1. 지도 띄우기
       map = new Tmapv2.Map("map_div", {
@@ -396,16 +377,39 @@
                      }
                   }//for문 [E]
                   drawLine(drawInfoArr);
+                  postArray(drawInfoArr);
+                  
+                 // console.log(drawInfoArr);
+
+                  
+                  
                },
                error : function(request, status, error) {
                   console.log("code:" + request.status + "\n"
                         + "message:" + request.responseText + "\n"
                         + "error:" + error);
                }
+               
             });
 
    }
 
+   function postArray(arrPoint) {
+	   console.log(arrPoint)
+	   $.ajax({
+		  url : '/app/arr/',
+		  type : 'POST',
+		  dataType : "JSON",
+		  contentType : "application/json",
+		  data : JSON.stringify(arrPoint),
+		  sccess : function(){
+			  console.log("성공");
+		  },error : function(){
+			  console.log('실패')
+		  }
+	   });
+   }
+   
    function addComma(num) {
       var regexp = /\B(?=(\d{3})+(?!\d))/g;
       return num.toString().replace(regexp, ',');
@@ -422,28 +426,10 @@
       });
       resultdrawArr.push(polyline_);
    }
+   
 </script>
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper('.swiper-container', {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  </script>
-  
-  <!-- 행선지 검색 JS -->
+
+  <!--카카오맵 행선지 검색 JS -->
 	<script>
 		$(function(){
 			$('#box_btn').click(function(){
