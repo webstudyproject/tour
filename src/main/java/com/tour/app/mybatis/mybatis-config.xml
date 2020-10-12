@@ -16,6 +16,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.tour.app.dto.PostDto" alias="Post"/> 
 		<typeAlias type="com.tour.app.dto.PostContentDto" alias="PostContent"/> 
 		<typeAlias type="com.tour.app.dto.PostCommentDto" alias="PostComment"/> 
+		<typeAlias type="com.tour.app.dto.SampleDto" alias="sampleDto"/> 
+		<typeAlias type="com.tour.app.dto.FaqDto" alias="faqDto"/>
+		<typeAlias type="com.tour.app.dto.CatDto" alias="catDto"/>
+		<typeAlias type="com.tour.app.dto.InqDto" alias="inqDto"/>
 	</typeAliases>
 
 </configuration>
