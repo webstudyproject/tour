@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tour.app.dao.FaqDao">
+
+	<select id="allList" resultType="faqDto"
+		parameterType="String">
+		SELECT
+			FAQ_ID as id, FAQ_CAT_CD1 as catCd1, FAQ_CAT_CD2 as catCd2,
+			FAQ_QUE as que,FAQ_ANSWER as answer,FAQ_ORD as ord,FAQ_REG_DATE as regDate
+		FROM FAQ
+		<if test="title != null">
+			WHERE FAQ_CAT_CD2 = #{catCd2}
+		</if>
+
+	</select>
+
+	<select id="tabMenu" resultType="catDto">
+	<![CDATA[
+		SELECT
+			CAT2_ID AS catId, CAT2_CD1 AS catCd1, CAT2_CD2 AS catCd2, CAT2_NM2 AS catNm2
+		FROM CATEGORY2
+		WHERE 1=1
+			AND CAT2_CD1 = '01'
+	]]>
+	</select>
+
+
+</mapper>

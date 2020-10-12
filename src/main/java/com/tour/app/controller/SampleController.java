@@ -20,13 +20,20 @@ public class SampleController {
 	
 	@RequestMapping(value = "/sample/sampleJsp")
 //	public ModelAndView faqMain(Model model) {
-	public String faqMain(Model model) {
+	public String sampleJsp(Model model) {
 	
 		int result = sampleService.SampleSelect();
 		model.addAttribute("result",result);
 		
 		return "/sample/sampleJsp";
 //		return "tiles/sample/sampleJsp";	//	tiles 사용
+	}
+	
+	@RequestMapping(value = "/sample/sampleMap")
+	public String sampleMap(Model model) {
+	
+		
+		return "/sample/sampleMap";
 	}
 	
 }
