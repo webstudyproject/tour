@@ -393,21 +393,31 @@
             });
 
    }
-
+//Controller와 ajax 통신
    function postArray(arrPoint) {
 	   console.log(arrPoint)
 	   $.ajax({
-		  url : '/app/arr/',
+		  url : '/app/arrPoint',
 		  type : 'POST',
-		  dataType : "JSON",
-		  contentType : "application/json",
-		  data : JSON.stringify(arrPoint),
-		  sccess : function(){
-			  console.log("성공");
+		  dataType : 'JSON',
+		  contentType : 'application/json',
+		  data : JSON.stringify(getArrPointObject(arrPoint)),
+		  success : function(){
+			  console.log("arrPoint ajax Controller 통신 성공");
 		  },error : function(){
-			  console.log('실패')
+			  console.log('arrPoint ajax Controller 통신 실패')
 		  }
 	   });
+   }
+   
+   function getArrPointObject(arrPoint){
+	   return arrPoint.map(function(element, index){
+		   var returnObj = {};
+		   returnObj["name"] = element.name;
+		   returnObj["_lat"] = element._lat;
+		   returnObj["_lng"] = element._lng;
+		   return returnObj;
+	   })
    }
    
    function addComma(num) {
