@@ -391,7 +391,7 @@
                }
                
             });
-
+  
    }
 //Controller와 ajax 통신
    function postArray(arrPoint) {
